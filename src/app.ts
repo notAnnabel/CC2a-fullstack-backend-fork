@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 // create express app & choose port
 const app = express();
 const port = 3000;
-let counter = 0;
+let pollutionState = false;
 
 // setup CORS to allow requests from any origin
 const corsOptions = {
@@ -22,13 +22,18 @@ app.get('/', (req, res) => {
   res.send({ message: 'yay' })
 })
 
-app.get('/counter', (req, res) => {
-  res.send({ counter: counter })
+app.get('/pollution', (req, res) => {
+  res.send({ pollutionState: pollutionState })
 })
 
-app.post('/counter', (req, res) => {
- counter = req.body.counter;
- res.send({message: "this respond hasn't been implemented yet ;;"})
+app.post('/pollute', (req, res) => {
+pollutionState = true;
+ res.send({message: "sea has been polluted"})
+})
+
+app.post('/clean', (req, res) => {
+pollutionState = false;
+ res.send({message: "sea has been cleaned"})
 })
 
 
