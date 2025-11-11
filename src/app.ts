@@ -26,14 +26,16 @@ app.get('/pollution', (req, res) => {
   res.send({ pollutionState: pollutionState })
 })
 
+
+// STEP ONE - instead of returning a message, return the new pollution state (like in the get)
 app.post('/pollute', (req, res) => {
 pollutionState = true;
- res.send({message: "sea has been polluted"})
+ res.send({pollutionState : pollutionState})
 })
 
 app.post('/clean', (req, res) => {
 pollutionState = false;
- res.send({message: "sea has been cleaned"})
+ res.send({pollutionState: pollutionState}) // set the pollution based on if its clean or not
 })
 
 
