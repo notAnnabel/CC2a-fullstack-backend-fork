@@ -2,10 +2,12 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 
+
 // create express app & choose port
 const app = express();
 const port = 3000;
 let pollutionState = false;
+
 
 // setup CORS to allow requests from any origin
 const corsOptions = {
@@ -27,7 +29,6 @@ app.get('/pollution', (req, res) => {
 })
 
 
-// STEP ONE - instead of returning a message, return the new pollution state (like in the get)
 app.post('/pollute', (req, res) => {
 pollutionState = true;
  res.send({pollutionState : pollutionState})
